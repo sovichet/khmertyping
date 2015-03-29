@@ -7,11 +7,11 @@ module.exports = function(grunt) {
     meta: {
       version: '0.1.0'
     },
-    banner: '/*! PROJECT_NAME - v<%= meta.version %> - ' +
+    banner: '/*! Khmer Typing - v<%= meta.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-      '* http://PROJECT_WEBSITE/\n' +
+      '* http://sovichet.info/khmertyping/\n' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
-      'YOUR_NAME; Licensed MIT */\n',
+      'Sovichet Tep; Licensed MIT */\n',
     // Task configuration.
     concat: {
       options: {

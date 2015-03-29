@@ -1,6 +1,6 @@
-/*! PROJECT_NAME - v0.1.0 - 2015-03-30
-* http://PROJECT_WEBSITE/
-* Copyright (c) 2015 YOUR_NAME; Licensed MIT */
+/*! Khmer Typing - v0.1.0 - 2015-03-30
+* http://sovichet.info/khmertyping/
+* Copyright (c) 2015 Sovichet Tep; Licensed MIT */
 angular.module('appModule',['coreModule','ui.bootstrap','lessons','keyboard','misc','ngCookies'])
 .controller('IntroCtrl', ['$scope', '$cookieStore', function($scope, $cookieStore) {
     $scope.visited = $cookieStore.get('visited') || false;
