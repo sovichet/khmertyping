@@ -11,7 +11,7 @@ module.exports = function(grunt) {
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
       '* http://sovichet.info/khmertyping/\n' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
-      'Sovichet Tep; Licensed MIT */\n',
+      'Sovichet Tep; Licensed GNU GPL v2.0 */\n',
     // Task configuration.
     concat: {
       options: {
