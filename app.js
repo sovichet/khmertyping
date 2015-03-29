@@ -1,4 +1,4 @@
-/*! PROJECT_NAME - v0.1.0 - 2015-03-29
+/*! PROJECT_NAME - v0.1.0 - 2015-03-30
 * http://PROJECT_WEBSITE/
 * Copyright (c) 2015 YOUR_NAME; Licensed MIT */
 angular.module('appModule',['coreModule','ui.bootstrap','lessons','keyboard','misc','ngCookies'])
@@ -56,10 +56,10 @@ angular.module('appModule',['coreModule','ui.bootstrap','lessons','keyboard','mi
         $scope.complete = $scope.correct * 100  / $scope.lessonLength;
         tbc_type++;
 
-        if(tbc_type%90 === 0 && tbc_type !== 0 && tbc < textbox.scrollTopMax) {
+        if(tbc_type%95 === 0 && tbc_type !== 0 && tbc < textbox.scrollTopMax) {
             tbc += 36;
             textbox.scrollTop = tbc;
-            tbc_type = 5;
+            tbc_type = 3;
         }
 
         // check if current word is a word, or the last letter of the last word
