@@ -1,3 +1,6 @@
 node_modules/
 php/
 lib/
+build/
+./app.js
+./app.min.js
