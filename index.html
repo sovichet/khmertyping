@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>កម្មវិធី​រៀន​វាយ​អក្សរ​ខ្មែរ​តាម​ទម្រង់​យូនីកូដ</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script type="text/javascript" src="lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="lib/angular-cookies/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="app/core.js"></script>
+    <script type="text/javascript" src="app/app.js"></script>
+    <script type="text/javascript" src="app/lessons.js"></script>
+    <script type="text/javascript" src="app/keyboard.js"></script>
+</head>
+<body ng-app="appModule" ng-controller="TypingCtrl">
+
+    <div ng-controller="IntroCtrl" ng-hide="visited" class="intro-box">
+        <div class="inner-box" ng-hide="visited">
+            <h1>សូម​ស្វាគមន៍​ជា​លើក​ដំបូង</h1>
+            <p>
+                ខ្ញុំ​គិត​ថា​អ្នក​មក​ទី​នេះ​ជា​លើក​ដំបូង តើ​មែន​ទេ? បើ​មែន​នោះ ខ្ញុំ​សូម​ណែនាំ​អ្នក​បន្តិច​បន្តួច​អំពី​ទីនេះ។
+            </p>
+            <p>
+                នៅ​ទីនេះ​មាន​គោល​បំណង​តែ​មួយ​គត់ គឺ​ផ្ដល់​មធ្យោបាយ​ឲ្យ​អ្នក​ទាំងអស់​គ្នា​អាច​រៀន​វាយ​អក្សរ​យូនីកូដ​ខ្មែរ​ឲ្យ​បាន​ប្រសើរ​ជាង​មុន ដោយ​ផ្អែក​ទៅ​លើ​មេរៀន​ដែល​បាន​រៀបចំ​រួច​ជា​ស្រេច។
+            </p>
+            <p>
+                សេចក្ដី​ណែនាំ​ប៉ុណ្ណឹង​មិន​ទាន់​គ្រប់គ្រាន់​ទេ​ឬ? បើ​អ៊ីចឹង សូម​ចុច​លើ​សញ្ញា <span class="glyphicon glyphicon-info-sign"></span>  ដែល​ស្ថិត​នៅ​ផ្នែក​ខាង​ឆ្វេង​ទំព័រ ដើម្បី​ស្វែងយល់​អំពី​ទី​នេះ​បន្ថែម និង​ដើម្បី​មើល​អំពី​របៀប​ប្រើប្រាស់។
+                អ្នក​គួរ​តែ​មើល​អំពី​របៀប​ប្រើប្រាស់​ជាមុន​សិន។
+            </p>
+            <button ng-click="dismiss()" class="btn btn-danger">X</button>
+        </div>
+        <button style="position: absolute; z-index: 999;" ng-click="deleteCookie()" class="btn btn-primary">Restart</button>
+    </div>
+
+    <div ng-show="isMacintosh" class="overlay">
+        <section>
+            <h1>អ្នក​មិន​ទាន់​អាច​ប្រើ​កម្មវិធី​នេះ​នៅ​លើ Mac OS បាន​ទេ។</h1>
+            <p class="note">
+                កម្មវិធី​នេះ​ត្រូវ​បាន​សាកល្បង និង​អាច​ប្រើ​បាន​តែ​នៅ​លើ Windows និង Linux ប៉ុណ្ណោះ។<br/>
+                យើង​នឹង​ធ្វើ​បច្ចុប្បន្នភាព​កម្មវិធី​នេះ​ឲ្យ​មាន​ដំណើរការ​នៅ​លើ Mac OS នា​ពេល​ខាង​មុខ។
+            </p>
+        </section>
+    </div>
+
+    <script type="text/ng-template" id="aboutApp.html">
+        <div class="modal-header">
+            <h3 class="modal-title">អំពី​កម្មវិធី និង របៀប​ប្រើប្រាស់</h3>
+        </div>
+        <div class="modal-body info-body">
+            <p><strong>កម្មវិធី​រៀន​វាយ​អក្សរ​ខ្មែរ​យូនីកូដ</strong> នេះ​ត្រូវ​បាន​បង្កើត​ឡើង​ក្នុង​គោល​បំណង​ផ្ដល់​មធ្យោបាយ​ដ៏​ងាយ​ស្រួល​សម្រាប់​អ្នក​ដែល​ចង់​ចេះ​វាយ​អក្សរ​ខ្មែរ​តាម​បែប​យូនីកូដ។ កម្មវិធី​នេះ​ត្រូវ​បាន​បង្កើត​ឡើង​ឲ្យ​ដំណើរការ​នៅ​ក្នុង​កម្មវិធី​អ៊ីនធឺណិត ព្រោះ​វា​អាច​ប្រើ​បាន​គ្រប់​ប្រព័ន្ធ​ប្រតិបត្តិការ​នានា (លើ​កុំព្យូទ័រ) រួម​មាន Windows, Linux, Mac OS (មិន​ទាន់​អាច​ប្រើ​បាន​នៅ​លើ Mac OS ទេ)។</p></p>មូលហេតុ​ម្យ៉ាង​ទៀត​នោះ​គឺ ដោយសារ​កម្មវិធី​រៀន​វាយ​អក្សរ​ខ្មែរ​យូនីកូដ​របស់​គម្រោង <strong>ខ្មែរអូអេស</strong> អាច​ប្រើ​បាន​តែ​នៅ​លើ Windows ទើប​ខ្ញុំ​សម្រេច​ចិត្ត​ចំណាយ​ពេល​ទំនេរ​ពី​ការងារ​និង​សាលា មក​បង្កើត​កម្មវិធី​មួយ​នេះ ដោយ​យក​ឯកសារ​មេរៀន និង​មូលដ្ឋាន​គ្រឹះ​មួយ​ចំនួន​ពី​កម្មវិធី​ដើម​របស់​គម្រោង <strong>ខ្មែរអូអេស</strong> ។</p>
+            <p>ប្រសិន​បើ​អ្នក​រក​ឃើញ​បញ្ហា​ណា​មួយ​នៅ​ក្នុង​កម្មវិធី​នេះ សូម​ទាក់ទង​មក​ខ្ញុំ​តាមរយៈ៖<br/>អ៊ីមែល៖ sovichet.tep[at]gmail.com<br/>Facebook: Tep Sovichet<br/>Twitter: @sovichet</p>
+
+            <p class="note">
+            គម្រោង​នេះ​ត្រូវ​បាន​បង្កើត​ឡើង​ជា​កម្មវិធី​កូដ​បើក​ទូលាយ (open-source software project) ដែល​អ្នក​អាច​ស្វែងរក​កូដ​ដើម​បាន​នៅ​ក្នុង​ទំព័រ <a href="">Github</a> ។ ខ្ញុំ​ក៏​សូម​អរគុណ <a href="http://angularjs.org">AngularJS</a> ដែល​បាន​ផ្ដល់​មធ្យោបាយ​យ៉ាង​ស្រួល​សម្រាប់​ការ​បង្កើត​កម្មវិធី​នេះ។
+            </p>
+
+            <p><h3>របៀប​ប្រើប្រាស់</h3>
+            <ul>
+                <li>អ្នក​ចាំបាច់​ត្រូវ​ប្រើ​ក្ដារចុច NiDA Standard (កំណែ១.០)។</li>
+                <li>ពេល​អ្នក​បើក​កម្មវិធី​នេះ​ដំបូង សូម​ចុច «ជ្រើសរើស​មេរៀន» ដែល​ស្ថិត​ក្រោម​ប្រអប់សេចក្ដី​ណែនាំ, បន្ទាប់​មក​ចុច​ចាប់ផ្ដើម។</li>
+                <li>សូម​ប្ដូរ​ក្ដារចុច​របស់​អ្នក​ទៅ​ជា​ខ្មែរ នៅ​ពេល​ចាប់​ផ្ដើម​វាយ។</li>
+                <li>កម្មវិធី​នេះ​មិន​រក្សាទុក​ការ​រៀន​របស់​អ្នក​នោះទេ ដូច្នេះ​វា​មិន​ចាំ​ថា​អ្នក​វាយ​ដល់​មេរៀន​ណា​នោះ​ទេ នៅ​ពេល​អ្នក​ចាកចេញ​ពី​ទីនេះ។</li>
+            </ul></p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="closeModal()">បិទ</button>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="aboutMe.html">
+        <div class="modal-header">
+            <h3 class="modal-title">អំពី​អ្នក​បង្កើត</h3>
+        </div>
+        <div class="modal-body">
+            <div class="me-header">
+                <div class="my-pic"><img src="http://gravatar.com/avatar/6801eff254f3468fc4e89c357c2385f1?s=150"></div>
+                <h1 class="my-name">ទេព សុវិចិត្រ</h1>
+            </div>
+
+            <div class="me-info">
+                <ul>
+                    <li>និស្សិត​អាហារូបករណ៍​ផ្នែក​វិទ្យាសាស្ត្រ​កុំព្យូទ័រ (ជំនាន់​ទី​១៧), សាកលវិទ្យាល័យ​ភូមិន្ទ​ភ្នំពេញ</li>
+                    <li>Junior Software Developer, អង្គការ​វិទ្យាស្ថាន​បើក​ទូលាយ</li>
+                    <li>រចនា​ពុម្ព​អក្សរ​យូនីកូដ​ខ្មែរ, សរសេរ​ប្លក់, អាន​សៀវភៅៗៗៗៗៗៗៗៗៗៗៗៗ</li>
+                    <li>C/C++, HTML, CSS, JavaScript, AngularJS, WordPress</li>
+                    <li><a href="http://facebook.com/sovichet.tep">Facebook</a>, <a href="http://twitter.com/sovichet">Twitter</a>, <a href="https://www.linkedin.com/in/sovichettep">LinkedIn</a></li>
+                </ul>
+            </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="closeModal()">បិទ</button>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="lessonModal.html">
+        <div class="modal-header lesson-modal-header">
+            <div class="modal-title">បញ្ជី​មេរៀន</div>
+        </div>
+        <div class="lesson-modal-body">
+            <ul>
+                <li ng-click="choose(lesson)" ng-repeat="lesson in lessons">{{lesson.title}}</li>
+            </ul>
+        </div>
+        <div class="modal-footer lesson-modal-footer">
+            <button class="btn btn-primary" ng-click="closeModal()">ចាកចេញ</button>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="finished.html">
+        <div class="modal-header">
+            <h3 class="modal-title">ជោគជ័យ!</h3>
+        </div>
+        <div ng-show="wpm !== 0 || wrong !== 0" class="modal-body">
+            លទ្ធផល​របស់​អ្នក​ក្នុង​មេរៀន​នេះ៖<br/>
+            WPM៖ <span style="color: #4caf50; font-weight: bold;">{{wpm}}</span><br/>
+            វាយខុស៖ <span style="color: #f44336; font-weight: bold;">{{wrong}}</span>
+        </div>
+        <div ng-show="wpm === 0 && wrong === 0" class="modal-body">
+            អ្នក​បាន​បញ្ចប់​មេរៀន​នេះ​ហើយ សូម​ទៅ​មុខ​បន្ត​ទៀត​សម្រាប់​មេរៀន​ថ្មីៗ ឬ​ការ​ហ្វឹកហាត់​នានា។
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" ng-click="gonext()">បន្ត​ទៅ​មុខ</button>
+            <button class="btn btn-primary" ng-click="closeModal()">ចាកចេញ</button>
+        </div>
+    </script>
+
+    <div id="page-wrap" class="container">
+        <div id="float-button">
+            <div ng-click="openModal('aboutApp.html')" id="about-app" class="fbtn">
+                <span class="glyphicon glyphicon-info-sign"></span>
+            </div>
+            <div ng-click="openModal('aboutMe.html')" id="about-me" class="fbtn">
+                <span class="glyphicon glyphicon-user"></span>
+            </div>
+        </div>
+
+        <div id="upper">
+            <div class="row">
+                <div class="lesson-title">{{title || "កម្មវិធី​រៀន​វាយ​យូនីកូដ​ខ្មែរ"}}</div>
+                <div class="col-xs-9">
+                    <div id="screen-text">
+                        <div class="row st1">
+                            <div class="col-xs-3">ដែល​ត្រូវ​វាយ៖</div>
+                            <div id="to-type" class="col-xs-9">{{toType}}</div>
+                        </div>
+                        <div class="row st2">
+                            <div class="col-xs-12">
+                                <div ng-show="textarea" id="text">{{textarea}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <progressbar id="progress-bar" value="complete"></progressbar>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div id="text-info-screen">
+                        <label>សេចក្ដី​ណែនាំ</label>
+                        <textarea id="text-info" readonly>{{lessonInfo}}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="bottom">
+            <div class="row">
+                <div class="keyboard-surface col-xs-9">
+                    <svg width="0" height="0">
+                      <defs>
+                        <clippath id="kb-clip">
+                            <rect width="41.568" height="41.568" x="0" y="0" />
+                        </clippath>
+                        <clippath id="shift-clip">
+                            <rect width="108.631" height="41.045" x="0" y="137.682" />
+                            <rect width="108.631" height="41.045" x="566.354" y="137.682" />
+                        </clippath>
+                        <clippath id="space-clip">
+                            <rect width="289.712" height="40.568" x="182.038" y="183.731" />
+                        </clippath>
+                        <clippath id="altgr-clip">
+                            <rect width="63.629" height="41.366" x="475.627" y="183.331" />
+                        </clippath>
+                      </defs>
+                    </svg>
+
+                    <svg viewbox="0 0 675 225" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                        <!-- main keyboard -->
+                        <image height="225" width="675" xlink:href="img/kb.png"></image>
+                        <!-- normal key -->
+                        <image id="kb-key" style="display:none;" clip-path="url(#kb-clip)" height="225" width="675" xlink:href="img/kb-active.png"></image>
+                        <!-- shift key -->
+                        <image id="shift-key" style="display:none;" clip-path="url(#shift-clip)" height="225" width="675" xlink:href="img/kb-active.png"></image>
+                        <!-- space key -->
+                        <image id="space-key" style="display:none;" clip-path="url(#space-clip)" height="225" width="675" xlink:href="img/kb-active.png"></image>
+                        <!-- altgr key -->
+                        <image id="altgr-key" style="display:none;" clip-path="url(#altgr-clip)" height="225" width="675" xlink:href="img/kb-active.png"></image>
+                    </svg>
+                </div>
+                <div class="col-xs-3">
+                    <div id="typing-info">
+                        <button ng-controller="lessonList" id="lesson-select" class="btn" ng-click="openModal('sm')">{{lessonName}}</button>
+
+                        <div ng-hide="started" ng-click="startTyping();" class="btn btn-primary">
+                            ចាប់ផ្ដើម
+                        </div>
+                        <div ng-hide="!started" ng-click="stopTyping();" class="btn btn-danger">
+                            Stop
+                        </div>
+
+                        <div id="result">
+                            <h3>លទ្ធផល</h3>
+                            <label>WPM: </label> {{wpm}}<br/>
+                            <label class="c-red">វាយ​ខុស: </label> <span class="c-red">{{wrong}}</span><br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="ftext">
+                បង្កើត​ឡើង​ជាមួយ <a href="http://angularjs.org/" target="_blank"><img height="35" src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/200px-AngularJS_logo.svg.png" alt="AngularJS" title="AngularJS" /></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

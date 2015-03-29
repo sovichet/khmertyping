@@ -1,0 +1,308 @@
+/*
+ * @author Tep Sovichet
+ * @description Stylesheet for Web-based Khmer Unicode Typing application.
+ */
+
+@import url("normalize.css");
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,700);
+@import url(http://fonts.googleapis.com/css?family=Hanuman:400,700);
+
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: Ubuntu, Hanuman, sans;
+}
+
+body {
+    background: #ECF0F1;
+    position: relative;
+}
+
+textarea {
+    resize: none;
+}
+
+.modal-body {
+    font-size: 16px;
+    line-height: 1.8em;
+}
+
+.info-body {
+    height: 420px;
+    overflow-y: scroll;
+}
+
+.me-header {
+    text-align: center;
+}
+
+.me-header .my-name {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.my-pic img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    box-shadow: 0 4px 5px #888;
+}
+
+.note {
+    color: #888;
+    display: block;
+    border-left: 3px solid #4caf50;
+    padding-left: 30px;
+}
+
+.intro-box {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 11;
+}
+
+.intro-box:after {
+    content: "";
+    background: #333;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+}
+
+    .intro-box .inner-box {
+        background-color: #fff;
+        color: #333;
+        padding: 15px;
+        width: 550px;
+        border-radius: 5px;
+        box-shadow: 0 5px 5px #555;
+        position: absolute;
+        z-index: 10;
+        left: 50%;
+        top: 40%;
+        transform: translate(-50%, -50%);
+    }
+
+    .inner-box h1 {
+        font-size: 1.8em;
+        margin: 0;
+        padding-bottom: 15px;
+        line-height: 2em;
+        text-align: center;
+        font-weight: bold;
+        color: #3f51b5;
+    }
+
+    .inner-box p {
+        font-size: 1.2em;
+        line-height: 1.6em;
+    }
+
+    .inner-box .btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: #f44336;
+        background: none;
+        border: 0;
+        font-weight: bold;
+    }
+
+    .inner-box .btn:hover {
+        color: #fff;
+        background: #D9534F;
+    }
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 9999;
+}
+    .overlay section {
+        width: 700px;
+        margin: 0 auto;
+        color: #fff;
+        text-align: center;
+    }
+
+    .overlay h1 {
+        font-weight: bold;
+        font-size: 4.5em;
+        line-height: 1.8em;
+        margin-top: 100px;
+    }
+
+    .overlay .note {
+        font-size: 1.5em;
+        line-height: 1.8em;
+    }
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+#page-wrap {
+    position: relative;
+}
+
+.container {
+    width: 940px !important;
+    max-width: none !important;
+}
+
+#app-info {
+    width: 200px;
+}
+
+#upper #screen-text,
+#upper #text-info-screen {
+    width: 100%;
+    height: 250px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 1px 1px 0 #ccc;
+}
+
+#upper #screen-text {
+    overflow-y: hidden;
+}
+
+#upper #text-info-screen {
+    width: 200px;
+    color: #263238;
+    background: #cfd8dc;
+}
+
+#upper #text-info-screen #text-info {
+    width: 100%;
+    border: none;
+    background: none;
+    height: 90%;
+    font-size: 16px;
+}
+
+.lesson-title {
+    font-size: 22px;
+    text-align: center;
+    line-height: 1.8em;
+    padding: 5px 0;
+}
+
+.st1 {
+    margin-bottom: 20px;
+}
+
+#to-type {
+    font-size: 40px;
+    /*padding-left: 180px;*/
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+}
+
+.st2 {
+    height: 160px;
+}
+
+#text {
+    overflow-y: scroll;
+    height: 150px;
+    font-size: 20px;
+    line-height: 1.8em;
+}
+
+#bottom {
+    margin-bottom: 30px;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 16px;
+    background: #fff;
+    padding: 15px;
+    box-shadow: 1px 1px 0px #CCC;
+    border-radius: 5px;
+}
+
+#result h3 {
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+#footer {
+    text-align: center;
+}
+
+.w {
+    padding: 6px 0;
+}
+
+.ac {
+    background: #3498db;
+    border-radius: 3px;
+    color: #fff;
+}
+
+#float-button {
+    position: absolute;
+    z-index: 10;
+    left: -25px;
+    top: 20px;
+}
+
+.fbtn {
+    text-align: center;
+    font-size: 25px;
+    color: #01579b;
+    cursor: pointer;
+}
+
+.c-red {
+    color: #DD0404;
+}
+
+.keyboard-surface {
+    margin-top: -15px;
+}
+
+.lesson-modal-body {
+    height: 250px;
+    overflow-y: scroll;
+}
+
+.lesson-modal-body ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lesson-modal-body ul li {
+    line-height: 2.5em;
+    height: 2.5em;
+    padding: 0 20px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.lesson-modal-body ul li:nth-child(2n) {
+    background: #efefef;
+}
+
+.lesson-modal-body ul li:hover {
+    background: #ff5722;
+    color: #fff;
+}
+
+.norelative {
+    position: inherit;
+}
+
+.modal-backdrop {
+    height: 100%;
+}

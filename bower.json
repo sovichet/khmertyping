@@ -1,0 +1,13 @@
+{
+  "name": "khmertyping",
+  "version": "0.1",
+  "authors": [
+    "Sovichet Tep <sovichet.tep@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "http://sovichet.info",
+  "private": true,
+  "dependencies": {
+    "angular-bootstrap": "~0.12.1"
+  }
+}
