@@ -27,6 +27,12 @@ textarea {
     line-height: 1.8em;
 }
 
+.modal-body img {
+    width: 100%;
+    height: auto;
+    margin: 15px 0;
+}
+
 .info-body {
     height: 420px;
     overflow-y: scroll;
