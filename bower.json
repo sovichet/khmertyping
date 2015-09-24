@@ -8,6 +8,8 @@
   "homepage": "http://sovichet.info",
   "private": true,
   "dependencies": {
-    "angular-bootstrap": "~0.12.1"
+    "angular-bootstrap": "~0.12.1",
+    "angular-cookies": "~1.4.6",
+    "bootstrap": "~3.3.5"
   }
 }
